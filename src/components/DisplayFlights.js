@@ -13,7 +13,7 @@ class DisplayFlights extends React.Component {
         console.log('to=', this.props.match.params.to);
         console.log('departureDate=',this.props.match.params.departureDate);
 
-        axios.get('http://localhost:8080/flightservices/flights' +
+        axios.get('http://localhost:8080/flightServices/flights' +
         '?from=' + this.props.match.params.from +
         '&to='   + this.props.match.params.to + 
         '&departureDate=' + this.props.match.params.departureDate)
