@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';  
 
 class DisplayFlights extends React.Component {
 
     state= {
-        flightdata: []
+        flightData: []
     }
 
     componentWillMount(){
@@ -12,7 +13,7 @@ class DisplayFlights extends React.Component {
         console.log('to=', this.props.match.params.to);
         console.log('departureDate=',this.props.match.params.departureDate);
 
-        axios.get('http://localhost:3000/flightservices/flights' +
+        axios.get('http://localhost:8080/flightservices/flights' +
         '?from=' + this.props.match.params.from +
         '&to='   + this.props.match.params.to + 
         '&departureDate=' + this.props.match.params.departureDate)
@@ -56,6 +57,7 @@ class RowCreator extends React.Component {
             <td>{flight.departureCity}</td>
             <td>{flight.arrivalCity}</td>
             <td>{flight.estimatedDepartureTime}</td>
+            <td><Link to={'/passengerDetails/' + flight.id}>Select</Link></td>
         </tr>
     }
 }

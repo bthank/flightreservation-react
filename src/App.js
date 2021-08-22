@@ -13,7 +13,7 @@ function App() {
       <Switch>
         <Route  exact path="/" component={FindFlights}/>
         <Route  path="/displayFlights/:from/:to/:departureDate" component={DisplayFlights}/>
-        <Route  path="/passengerDetails" component={PassengerDetails}/>
+        <Route  path="/passengerDetails/:flightId" component={PassengerDetails}/>
         <Route  path="/confirmReservation" component={ConfirmReservation}/>
       </Switch>
     </div>
