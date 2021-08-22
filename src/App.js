@@ -14,7 +14,7 @@ function App() {
         <Route  exact path="/" component={FindFlights}/>
         <Route  path="/displayFlights/:from/:to/:departureDate" component={DisplayFlights}/>
         <Route  path="/passengerDetails/:flightId" component={PassengerDetails}/>
-        <Route  path="/confirmReservation" component={ConfirmReservation}/>
+        <Route  path="/confirmReservation/:reservationId" component={ConfirmReservation}/>
       </Switch>
     </div>
   );

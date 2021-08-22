@@ -15,6 +15,10 @@ class PassengerDetails extends React.Component {
     }
 
     handleSubmit(event){
+        // call preventDefault() to prevent the default form action; it will stop 
+        // form from being submitted
+        event.preventDefault();
+
         const data = {
             flightId: this.props.match.params.flightId,
             passengerFirstName: this.passengerFirstName,
