@@ -6,12 +6,30 @@ class PassengerDetails extends React.Component {
     state = {};
 
     componentWillMount(){
+ 
         axios.get("/flightServices/flights/" + this.props.match.params.flightId)
             .then(response => {
                 /* the flight info that comes in will become the new state  */
                 this.setState(response.data);
             })
     }
+
+    handleSubmit(event){
+        const data = {
+            flightId: this.props.match.params.flightId,
+            passengerFirstName: this.passengerFirstName,
+            passengerMiddleName: this.passengerMiddleName,
+            passengerLastName: this.passengerLastName,
+            passengerEmail: this.passengerEmail,
+            passengerPhone: this.passengerPhone
+        }
+        axios.post("/flightServices/reservations",data)
+            .then(response => {
+                /* navigate to the next page */
+                this.props.history.push('/confirmReservation/' + response.data.id)
+            })
+    }
+
 
     render(){
         return (
@@ -34,7 +52,7 @@ class PassengerDetails extends React.Component {
                     Credit Card No: <input type="text" name="cCardNumber" onChange={(event) => {this.cCardNumber = event.target.value}}/> <br/>
                     Expiration Date: <input type="text" name="expirationDate" onChange={(event) => {this.expirationDate = event.target.value}}/> <br/>
                     Security Code: <input type="text" name="securityCode" onChange={(event) => {this.securityCode = event.target.value}}/> <br/>
-                    <button>Confirm</button>
+                    <button onClick={this.handleSubmit.bind(this)}   >Confirm</button>
                 </form>
 
             </div>
